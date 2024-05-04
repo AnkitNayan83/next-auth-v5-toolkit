@@ -1,9 +1,9 @@
-import { LoginForm } from "@/components/auth/login-form";
+import { RegisterFrom } from "@/components/auth/register-form";
 
 const Register = () => {
     return (
         <div>
-            <LoginForm />
+            <RegisterFrom />
         </div>
     );
 };
