@@ -3,9 +3,19 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import authConfig from "./auth.config";
 import { db } from "./lib/db";
 import { getUserById } from "./data/user";
-import { UserRole } from "@prisma/client";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+    // allows you to perfom certain actions for a certain event docs
+
+    events: {
+        async linkAccount({ user }) {
+            await db.user.update({
+                where: { id: user.id! },
+                data: { emailVerified: new Date() },
+            });
+        },
+    },
+
     // What action will be performed after a certain event happens like signIn ...
     callbacks: {
         // To extend the session you have to return JWT token first
