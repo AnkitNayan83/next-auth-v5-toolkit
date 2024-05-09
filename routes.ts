@@ -3,23 +3,23 @@
  * @type {string[]}
  */
 
-export const publicRoutes = ["/"];
+export const publicRoutes: string[] = ["/"];
 
 /**
  * An array of routes that are used for authentication.
  * @type {string[]}
  */
-export const authRoutes = ["/auth/login", "/auth/register"];
+export const authRoutes: string[] = ["/auth/login", "/auth/register", "/auth/error"];
 
 /**
  * Routes that are used for api authentication.
  * @type {string}
  */
-export const apiAuthPrefix = "/api/auth";
+export const apiAuthPrefix: string = "/api/auth";
 
 /**
  * Default path after loggin in.
  * @type {string}
  */
 
-export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const DEFAULT_LOGIN_REDIRECT: string = "/settings";

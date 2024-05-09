@@ -5,9 +5,14 @@ import { db } from "./lib/db";
 import { getUserById } from "./data/user";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-    // allows you to perfom certain actions for a certain event docs
+    pages: {
+        signIn: "/auth/login",
+        error: "/auth/error",
+    },
 
+    // allows you to perfom certain actions for a certain event
     events: {
+        // when a new account is linked using oAuth
         async linkAccount({ user }) {
             await db.user.update({
                 where: { id: user.id! },
@@ -18,6 +23,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
     // What action will be performed after a certain event happens like signIn ...
     callbacks: {
+        async signIn({ user, account }) {
+            if (account?.provider !== "credentials") return true;
+
+            const existingUser = await getUserById(user.id!);
+
+            if (!existingUser?.emailVerified) {
+                return false;
+            }
+
+            return true;
+        },
+
         // To extend the session you have to return JWT token first
         async session({ session, token }) {
             // console.log({ "Session Token": { token }, session });
