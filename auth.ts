@@ -1,8 +1,9 @@
-import NextAuth from "next-auth";
+import NextAuth, { type DefaultSession } from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import authConfig from "./auth.config";
 import { db } from "./lib/db";
 import { getUserById } from "./data/user";
+import { UserRole } from "@prisma/client";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
     // What action will be performed after a certain event happens like signIn ...
@@ -18,7 +19,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
 
             if (token.role && session.user) {
-                //@ts-ignore
                 session.user.role = token.role;
             }
             return session;
