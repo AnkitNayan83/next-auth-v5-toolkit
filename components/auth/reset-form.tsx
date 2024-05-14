@@ -13,42 +13,32 @@ import {
 } from "@/components/ui/form";
 
 import { CardWrapper } from "./card-wrapper";
-import { LoginSchema } from "@/schemas";
+import { ResetSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { login } from "@/actions/login";
 import { useState, useTransition } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-
-export const LoginForm = () => {
-    const searchParams = useSearchParams();
-    const urlError =
-        searchParams.get("error") === "OAuthAccountNotLinked"
-            ? "Email alrady in use with other provider!"
-            : "";
-
+import { reset } from "@/actions/reset";
+export const ResetFrom = () => {
     const [isPending, startTransistion] = useTransition();
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
 
-    const form = useForm<z.infer<typeof LoginSchema>>({
-        resolver: zodResolver(LoginSchema),
+    const form = useForm<z.infer<typeof ResetSchema>>({
+        resolver: zodResolver(ResetSchema),
 
         defaultValues: {
             email: "",
-            password: "",
         },
     });
 
-    const handelSubmit = (values: z.infer<typeof LoginSchema>) => {
+    const handelSubmit = (values: z.infer<typeof ResetSchema>) => {
         setError("");
         setSuccess("");
 
         startTransistion(() => {
-            login(values).then((data) => {
+            reset(values).then((data) => {
                 setError(data?.error);
                 setSuccess(data?.success);
             });
@@ -57,10 +47,9 @@ export const LoginForm = () => {
 
     return (
         <CardWrapper
-            headerLabel="Welcome Back"
-            backButtonLabel="Don't have an account"
-            backButtonHref="/auth/register"
-            showSocial
+            headerLabel="Forgot your password ?"
+            backButtonLabel="Back to login"
+            backButtonHref="/auth/login"
         >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handelSubmit)} className="space-y-6">
@@ -83,38 +72,11 @@ export const LoginForm = () => {
                                 </FormItem>
                             )}
                         />
-
-                        <FormField
-                            control={form.control}
-                            name="password"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                            {...field}
-                                            placeholder="******"
-                                            type="password"
-                                            disabled={isPending}
-                                        />
-                                    </FormControl>
-                                    <Button
-                                        size="sm"
-                                        variant={"link"}
-                                        asChild
-                                        className="font-normal px-0"
-                                    >
-                                        <Link href={"/auth/reset"}>Forgot Password?</Link>
-                                    </Button>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
                     </div>
-                    <FormError message={error || urlError} />
+                    <FormError message={error} />
                     <FormSuccess message={success} />
                     <Button type="submit" disabled={isPending} className="w-full">
-                        Login
+                        Send reset email
                     </Button>
                 </form>
             </Form>

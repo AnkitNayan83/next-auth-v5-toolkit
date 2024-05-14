@@ -9,7 +9,13 @@ export const publicRoutes: string[] = ["/", "/auth/verify"];
  * An array of routes that are used for authentication.
  * @type {string[]}
  */
-export const authRoutes: string[] = ["/auth/login", "/auth/register", "/auth/error"];
+export const authRoutes: string[] = [
+    "/auth/login",
+    "/auth/register",
+    "/auth/error",
+    "/auth/reset",
+    "/auth/new-password",
+];
 
 /**
  * Routes that are used for api authentication.

@@ -7,8 +7,19 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 
     await resend.emails.send({
         from: "NextAuth-Toolkit <onboarding@resend.dev>",
-        to: [email],
+        to: email,
         subject: "Verify your email",
         html: `<p> Click the following link to verify your email <a href="${confirmationLink}"> Verify Email </a> </p>`,
+    });
+};
+
+export const sendPasswordResetEmail = async (email: string, token: string) => {
+    const resetLink = `http://localhost:3000/auth/new-password?token=${token}`;
+
+    await resend.emails.send({
+        from: "NextAuth-Toolkit <onboarding@resend.dev>",
+        to: email,
+        subject: "Reset your password",
+        html: `<p> Click the following link to reset your password <a href="${resetLink}"> Reset Password </a> </p>`,
     });
 };
