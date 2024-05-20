@@ -1,23 +1,18 @@
-import { auth, signOut } from "@/auth"; //for server components import from @/auth
+"use client";
+
+// Using user session in the client component
+// Wrap your layout with session provider then use the usesession hook
+
+import { logout } from "@/actions/logout";
 import { Button } from "@/components/ui/button";
-const page = async () => {
-    const session = await auth();
+import { useCurrentUser } from "@/hooks/use-current-user";
+
+const page = () => {
+    const user = useCurrentUser();
 
     return (
-        <div>
-            <h1 className="text-2xl font-bold">{JSON.stringify(session)}</h1>
-            {
-                // for server components
-            }
-            <form
-                action={async () => {
-                    "use server";
-
-                    await signOut();
-                }}
-            >
-                <Button>Sign Out</Button>
-            </form>
+        <div className="bg-white p-10 rounded-xl">
+            <Button onClick={() => logout()}>Sign Out</Button>
         </div>
     );
 };

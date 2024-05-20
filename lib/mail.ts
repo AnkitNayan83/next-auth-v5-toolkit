@@ -29,6 +29,6 @@ export const sendTwoFactorToken = async (email: string, token: string) => {
         from: "NextAuth-Toolkit <onboarding@resend.dev>",
         to: email,
         subject: "Two Factor Authentication",
-        html: `<p> Your two factor authentication token is <b>${token}</b> </p>`,
+        html: `<div> <p>Your two factor authentication token is <b>${token}</b></p> <p>This OPT is valid for 10 miniutes only. Do not share this token with anyone.</p> </div>`,
     });
 };
