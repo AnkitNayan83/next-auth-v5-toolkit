@@ -51,10 +51,14 @@ const page = () => {
             hashedPassword: undefined,
             newPassword: undefined,
             role: user?.role || undefined,
+            isTwoFactorEnabled: user?.isTwoFactorEnabled || undefined,
         },
     });
 
     const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
+        setError("");
+        setSuccess("");
+
         startTransistion(() => {
             settings(values)
                 .then((data) => {
@@ -171,7 +175,7 @@ const page = () => {
                             {user?.isOAuth === false && (
                                 <FormField
                                     control={form.control}
-                                    name="isTwofactorEnabled"
+                                    name="isTwoFactorEnabled"
                                     render={({ field }) => (
                                         <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                                             <div className="space-y-0.5">

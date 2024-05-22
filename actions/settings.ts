@@ -29,7 +29,7 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
         values.email = undefined;
         values.hashedPassword = undefined;
         values.newPassword = undefined;
-        values.isTwofactorEnabled = undefined;
+        values.isTwoFactorEnabled = undefined;
     }
 
     if (values.email && values.email !== existingUser.email) {
