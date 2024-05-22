@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next-Auth v5 Full Stack Application
+
+This repository contains a full-stack application built using Next.js and Next-Auth v5. The application includes a comprehensive set of authentication features such as credentials login and registration, OAuth login, forgot password, email verification, password reset link, and two-factor authentication (2FA).
+
+## Features
+
+- **Credentials Login and Register**: Users can sign up and log in using their email and password.
+- **OAuth Login**: Integration with popular OAuth providers (e.g., Google, GitHub).
+- **Forgot Password**: Allows users to reset their password via email.
+- **Email Verification**: Users must verify their email address before accessing certain features.
+- **Password Reset Link**: Sends a secure link to reset the password.
+- **Two-Factor Authentication (2FA)**: Enhances security by requiring a second form of authentication.
+
+## Technologies Used
+
+- **Framework**: Next.js
+- **Authentication**: Next-Auth v5
+- **Database**:  PostgreSQL
+- **Styling**: Tailwind CSS, ShadCn UI]
+- **Email Service**: Nodemailer
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (version X.X.X)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/AnkitNayan83/next-auth-v5-toolkit.git
+   ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd next-auth-v5-toolkit
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+## Environment Variables:
+
+1. Create a `.env` file in the root of the project and add the following environment variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+DATABASE_URL=
+AUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+EMAIL=
+EMAIL_PASSWORD=
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the Application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Start the development server:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  ```bash
+  npm run dev
+  ```
 
-## Learn More
+2. Open http://localhost:3000 in your browser to see the application.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  [Ankit Nayan](https://github.com/AnkitNayan83)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
