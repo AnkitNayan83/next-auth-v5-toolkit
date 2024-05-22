@@ -9,7 +9,8 @@ const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Auth Toolkit",
-    description: "Auth toolkit is created and by next-auth v5",
+    description:
+        "Auth toolkit is an application which is made to help you in your authentication process.",
 };
 
 export default async function RootLayout({
