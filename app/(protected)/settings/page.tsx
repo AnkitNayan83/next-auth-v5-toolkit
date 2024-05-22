@@ -36,7 +36,7 @@ import { useForm } from "react-hook-form";
 
 import * as z from "zod";
 
-const page = () => {
+const SettingsPage = () => {
     const [isPending, startTransistion] = useTransition();
     const { update } = useSession();
     const [error, setError] = useState<string | undefined>();
@@ -209,4 +209,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default SettingsPage;
