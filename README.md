@@ -4,35 +4,35 @@ This repository contains a full-stack application built using Next.js and Next-A
 
 ## Features
 
-- **Credentials Login and Register**: Users can sign up and log in using their email and password.
-- **OAuth Login**: Integration with popular OAuth providers (e.g., Google, GitHub).
-- **Forgot Password**: Allows users to reset their password via email.
-- **Email Verification**: Users must verify their email address before accessing certain features.
-- **Password Reset Link**: Sends a secure link to reset the password.
-- **Two-Factor Authentication (2FA)**: Enhances security by requiring a second form of authentication.
+-   **Credentials Login and Register**: Users can sign up and log in using their email and password.
+-   **OAuth Login**: Integration with popular OAuth providers (e.g., Google, GitHub).
+-   **Forgot Password**: Allows users to reset their password via email.
+-   **Email Verification**: Users must verify their email address before accessing certain features.
+-   **Password Reset Link**: Sends a secure link to reset the password.
+-   **Two-Factor Authentication (2FA)**: Enhances security by requiring a second form of authentication.
 
 ## Technologies Used
 
-- **Framework**: Next.js
-- **Authentication**: Next-Auth v5
-- **Database**:  PostgreSQL
-- **Styling**: Tailwind CSS, ShadCn UI]
-- **Email Service**: Nodemailer
+-   **Framework**: Next.js
+-   **Authentication**: Next-Auth v5
+-   **Database**: PostgreSQL
+-   **Styling**: Tailwind CSS, ShadCn UI]
+-   **Email Service**: SendGrid
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (version X.X.X)
-- npm or yarn
+-   Node.js (version X.X.X)
+-   npm or yarn
 
 ### Installation
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/AnkitNayan83/next-auth-v5-toolkit.git
-   ```
+    ```bash
+    git clone https://github.com/AnkitNayan83/next-auth-v5-toolkit.git
+    ```
 
 2. Navigate to the project directory:
 
@@ -58,25 +58,22 @@ GOOGLE_CLIENT_SECRET=
 GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
 EMAIL=
-EMAIL_PASSWORD=
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+SENDGRID_API_KEY=
+NEXT_PUBLIC_APP_URL="http://localhost:3000" || "<your domain>"
 ```
 
 ## Running the Application
 
 1. Start the development server:
 
-  ```bash
-  npm run dev
-  ```
+```bash
+npm run dev
+```
 
 2. Open http://localhost:3000 in your browser to see the application.
 
-
 ## Author
 
-  [Ankit Nayan](https://github.com/AnkitNayan83)
+[Ankit Nayan](https://github.com/AnkitNayan83)
 
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
