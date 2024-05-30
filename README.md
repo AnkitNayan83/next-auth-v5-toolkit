@@ -59,7 +59,7 @@ GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
 EMAIL=
 SENDGRID_API_KEY=
-NEXT_PUBLIC_APP_URL="http://localhost:3000" || "<your domain>"
+NEXT_PUBLIC_APP_URL="http://localhost:3000" || "<your domain.com>"
 ```
 
 ## Running the Application
