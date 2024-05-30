@@ -1,21 +1,15 @@
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 
-const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD!;
 const EMAIL = process.env.EMAIL!;
 const domain = process.env.NEXT_PUBLIC_APP_URL!;
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY!;
 
-const trnasporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: EMAIL,
-        pass: EMAIL_PASSWORD,
-    },
-});
+sgMail.setApiKey(SENDGRID_API_KEY);
 
 export const sendVerificationEmail = async (email: string, token: string) => {
     const confirmationLink = `${domain}/auth/verify?token=${token}`;
 
-    await trnasporter.sendMail({
+    await sgMail.send({
         from: `nextauth-toolkit <${EMAIL}>`,
         to: email,
         subject: "Verify your email",
@@ -26,7 +20,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 export const sendPasswordResetEmail = async (email: string, token: string) => {
     const resetLink = `${domain}/auth/new-password?token=${token}`;
 
-    await trnasporter.sendMail({
+    await sgMail.send({
         from: `nextauth-toolkit <${EMAIL}>`,
         to: email,
         subject: "Reset your password",
@@ -35,7 +29,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 };
 
 export const sendTwoFactorToken = async (email: string, token: string) => {
-    await trnasporter.sendMail({
+    await sgMail.send({
         from: `nextauth-toolkit <${EMAIL}>`,
         to: email,
         subject: "Two Factor Authentication",
